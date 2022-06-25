@@ -5,7 +5,7 @@ import { RoutesApp } from "./RoutesApp";
 
 export default function App() {
 	return (
-		<div>
+		<div className="global">
 			<Header />
 			<RoutesApp />
 			<Footer />

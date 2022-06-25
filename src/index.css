@@ -2,9 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.global {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
 .container {
-    max-width: 1280px;
+    max-width: 1024px;
     margin: auto;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .min-h-1 {
@@ -25,4 +34,12 @@
 
 .min-h-footer {
     min-height: 200px;
+}
+
+.min-w-select {
+    min-width: 60%;
+}
+
+.min-h-not {
+    min-height: calc(100vh - 292px);
 }
