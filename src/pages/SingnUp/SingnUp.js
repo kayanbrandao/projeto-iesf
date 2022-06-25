@@ -1,11 +1,20 @@
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const SingnUp = () => {
     const params = useParams();
+    const navigate = useNavigate();
     const newPrice = params.price % 1 === 0 ? `${params.price}.00` : `${params.price}`;
 
+    const handleBack = () => {
+        navigate(-1);
+    }
+
+    const handleSelect = () => {
+        navigate("/");
+    }
+
     return (
-        <div>
+        <div className="container">
             <label className="flex flex-col mb-5">
                 Nome Completo:
                 <input
@@ -57,10 +66,14 @@ export const SingnUp = () => {
                 </label>
             </div>
 
-
-
-            <Link to="/" className="bg-green-400 px-6 py-2 rounded font-semibold hover:bg-green-500 mr-2 text-lg">Finalizar</Link>
-            <Link to="/" className="bg-blue-400 px-6 py-2 rounded font-semibold hover:bg-blue-500 text-lg">Voltar</Link>
+            <button
+                onClick={handleSelect}
+                className="bg-blue-600 px-6 py-2 outline-none rounded font-semibold hover:bg-blue-500 mr-2 text-lg"
+            >Finalizar</button>
+            <button
+                onClick={handleBack}
+                className="bg-gray-500 px-6 py-2 rounded font-semibold hover:bg-gray-400 text-lg"
+            >Voltar</button>
         </div>
     );
 }

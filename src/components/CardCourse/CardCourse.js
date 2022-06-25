@@ -8,7 +8,6 @@ export const CardCourse = ({ course }) => {
     const price = course.price;
 
     const handleCard = () => {
-
         navigate(`/singnup/${title}/${price}`);
     }
 
@@ -18,7 +17,7 @@ export const CardCourse = ({ course }) => {
             <span className="mb-5 text-center text-sm min-h-1">{course.description}</span>
             <span className="mb-5 text-lg font-semibold">{newPrice}</span>
             <button
-                className="uppercase bg-green-400 px-6 py-2 rounded font-semibold hover:bg-green-500 text-lg"
+                className="uppercase bg-blue-600 outline-none px-6 py-2 rounded font-semibold hover:bg-blue-500 text-lg"
                 onClick={handleCard}
             >selecionar</button>
         </div >

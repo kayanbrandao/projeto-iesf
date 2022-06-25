@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { CardCourse } from "../CardCourse/CardCourse";
 
-const baseURL = "https://62b4fcb1da3017eabb135218.mockapi.io/courses"
+const baseURL = "https://62b4fcb1da3017eabb135218.mockapi.io/courses";
 
 export const ListCardCourses = () => {
     const [courses, setCourses] = useState(null);
@@ -21,6 +21,5 @@ export const ListCardCourses = () => {
                 ))}
             </div>
         </div>
-
     );
 }
