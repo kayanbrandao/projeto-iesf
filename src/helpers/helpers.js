@@ -5,3 +5,15 @@ export const getValuesCourse = (array, id) => {
         };
     }
 }
+
+export const firstCapitalLetter = (value, name) => {
+    if (name) {
+        let newValue = value.split(' ');
+        newValue = newValue[0];
+        console.log(newValue[0].toUpperCase() + value.substring(1));
+        return
+    } else {
+        return value[0].toUpperCase() + value.substring(1);
+    }
+
+}

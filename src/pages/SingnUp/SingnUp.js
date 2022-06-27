@@ -13,12 +13,19 @@ export const SingnUp = ({ courses }) => {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [send, setSend] = useState(false);
+
+    const [modalIsOpen, setModalisOpen] = useState(false);
 
     const user = {
         name: name,
         email: email,
         phone: phone,
+    }
+
+    const course = {
+        title: card.title,
+        price: card.price.toFixed(2),
     }
 
     const validateForm = () => {
@@ -27,7 +34,13 @@ export const SingnUp = ({ courses }) => {
             return;
         }
 
-        setModalIsOpen(true)
+        if (phone.length !== 11) {
+            alert("Número de Telefone Inválido");
+            return;
+        }
+
+        setModalisOpen(true);
+        setSend(true);
     }
 
     return (
@@ -60,7 +73,7 @@ export const SingnUp = ({ courses }) => {
                     <input
                         type="tel"
                         className="border outline-none px-2 py-2 mt-2 rounded"
-                        placeholder="Ex.: 5565988887777"
+                        placeholder="Ex.: 65988887777"
                         onChange={e => setPhone(e.target.value)}
                         required
                     />
@@ -100,7 +113,7 @@ export const SingnUp = ({ courses }) => {
                 >Voltar</button>
             </div>
 
-            <ModalForm setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen} user={user} />
+            <ModalForm setModalisOpen={setModalisOpen} modalIsOpen={modalIsOpen} user={user} course={course} send={send} />
         </div>
     );
 }
