@@ -23,7 +23,7 @@ export const ListCardCourses = ({ courses }) => {
                     onClick={selectBack}
                     className="bg-gray-500 px-6 py-2 h-10 rounded font-semibold hover:bg-gray-400 text-lg mb-5 sm:w-full outline-none"
                 >Voltar</button>
-                <div>
+                <div className="sm:w-full sm:mb-8">
                     <select
                         className="outline-none border rounded py-2 h-10 w-36 sm:w-full"
                         value={orderId}
