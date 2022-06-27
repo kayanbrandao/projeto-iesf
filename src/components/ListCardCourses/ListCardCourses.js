@@ -18,14 +18,14 @@ export const ListCardCourses = ({ courses }) => {
 
     return (
         <div className="pt-8">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between sm:flex-col">
                 <button
                     onClick={selectBack}
                     className="bg-gray-500 px-6 py-2 h-10 rounded font-semibold hover:bg-gray-400 text-lg mb-5 sm:w-full outline-none"
                 >Voltar</button>
                 <div>
                     <select
-                        className="outline-none border rounded py-2 h-10 w-36"
+                        className="outline-none border rounded py-2 h-10 w-36 sm:w-full"
                         value={orderId}
                         onChange={e => setOrderId(e.target.value)}
                     >
