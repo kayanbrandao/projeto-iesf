@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { getValuesCourse } from "../../helpers/helpers";
 
-export const CardCourseHome = ({ getValuesCourse, idCourse }) => {
-    const card = getValuesCourse(idCourse);
+export const CardCourseHome = ({ idCourse, courses }) => {
+    const card = getValuesCourse(courses, idCourse);
 
     const navigate = useNavigate();
 
     const handleCard = () => {
-        navigate(`/singnup/${card.title}/${card.price}`);
+        navigate(`/singnup/${card.id}`);
     }
 
     return (

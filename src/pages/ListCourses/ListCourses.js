@@ -1,9 +1,9 @@
 import { ListCardCourses } from "../../components/ListCardCourses/ListCardCourses";
 
-export const ListCourses = () => {
+export const ListCourses = ({ courses }) => {
     return (
         <div className="container">
-            <ListCardCourses />
+            <ListCardCourses courses={courses} />
         </div>
     );
 }

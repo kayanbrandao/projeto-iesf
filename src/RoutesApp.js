@@ -4,12 +4,12 @@ import { ListCourses } from "./pages/ListCourses/ListCourses";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { SingnUp } from "./pages/SingnUp/SingnUp";
 
-export const RoutesApp = () => {
+export const RoutesApp = ({ courses }) => {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/courses" element={<ListCourses />} />
-            <Route path="/singnup/:title/:price" element={<SingnUp />} />
+            <Route path="/" element={<Home courses={courses} />} />
+            <Route path="/courses" element={<ListCourses courses={courses} />} />
+            <Route path="/singnup/:id" element={<SingnUp courses={courses} />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );
