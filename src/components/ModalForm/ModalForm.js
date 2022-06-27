@@ -1,6 +1,7 @@
 import ReactModal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { firstCapitalLetter } from "../../helpers/helpers";
+import { customStyles, defaultCustomStyles } from "./styles";
 
 ReactModal.setAppElement("#root");
 
@@ -9,35 +10,29 @@ export const ModalForm = ({ setModalisOpen, modalIsOpen, user, course, send }) =
     let name = "";
     let title = "";
 
+    const widthWindown = window.innerWidth;
+
     if (send) {
         name = firstCapitalLetter(user.name, true);
         title = firstCapitalLetter(course.title, false);
-    }
-
-    const customStyles = {
-        content: {
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)"
-        }
     }
 
     return (
         <ReactModal
             isOpen={modalIsOpen}
             onRequestClose={() => setModalisOpen(false)}
-            style={customStyles}
+            style={(widthWindown > 1024) ? customStyles : defaultCustomStyles}
         >
 
             <div className="flex items-center justify-end">
                 <button
                     onClick={() => setModalisOpen(false)}
-                    className="font-bold text-2xl mb-8"
+                    className="font-bold text-2xl mb-8 w"
                 >X</button>
             </div>
             <div className="flex flex-col justify-between min-h-modal">
                 <div className="flex flex-col">
-                    <span className="mb-4 text-xl">Obrigado(a) {name}, por dar preferência em nossa plataforma para escolher o curso desejado.</span>
+                    <span className="mb-4 text-xl">Obrigado(a) <strong>{name}</strong>, por dar preferência em nossa plataforma para escolher o curso desejado.</span>
                     <div className="flex flex-col">
                         <span className="mb-2 text-lg">Curso: <strong>{title}</strong></span>
                         <span className="mb-2 text-lg">Valor: <strong>R$ {course.price}</strong></span>
