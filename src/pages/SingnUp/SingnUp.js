@@ -1,13 +1,34 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ModalForm } from "../../components/ModalForm/ModalForm";
+import { getValuesCourse } from "../../helpers/helpers";
 
 export const SingnUp = ({ courses }) => {
     const params = useParams();
     const navigate = useNavigate();
-    const newPrice = params.price % 1 === 0 ? `${params.price}.00` : `${params.price}`;
+
+    const card = getValuesCourse(courses, params.id);
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const user = {
+        name: name,
+        email: email,
+        phone: phone,
+    }
+
+    const validateForm = () => {
+        if (name === "" || email === "" || phone === "") {
+            alert("Preencha todos os campos");
+            return;
+        }
+
+        setModalIsOpen(true)
+    }
 
     return (
         <div className="container py-8">
@@ -16,7 +37,9 @@ export const SingnUp = ({ courses }) => {
                 <input
                     type="text"
                     className="border outline-none px-2 py-2 mt-2 rounded"
-                    placeholder="Digite seu nome"
+                    placeholder="Ex.: Fulano de Tal"
+                    onChange={e => setName(e.target.value)}
+                    required
                 />
             </label>
 
@@ -26,16 +49,20 @@ export const SingnUp = ({ courses }) => {
                     <input
                         type="email"
                         className="border outline-none px-2 py-2 mt-2 rounded"
-                        placeholder="Digite seu email"
+                        placeholder="Ex.: teste@gmail.com"
+                        onChange={e => setEmail(e.target.value)}
+                        required
                     />
                 </label>
 
                 <label className="flex flex-col mb-5 w-72 sm:w-full text-start">
-                    Telefone Celular:
+                    Telefone Celular (apenas números):
                     <input
                         type="tel"
                         className="border outline-none px-2 py-2 mt-2 rounded"
-                        placeholder="Digite numero de telefone"
+                        placeholder="Ex.: 5565988887777"
+                        onChange={e => setPhone(e.target.value)}
+                        required
                     />
                 </label>
             </div>
@@ -46,7 +73,7 @@ export const SingnUp = ({ courses }) => {
                     <input
                         type="text"
                         className="border outline-none px-2 py-2 mt-2 uppercase rounded"
-                        value={params.title}
+                        value={card.title}
                         disabled
                     />
                 </label>
@@ -56,7 +83,7 @@ export const SingnUp = ({ courses }) => {
                     <input
                         type="text"
                         className="border outline-none px-2 py-2 mt-2 rounded"
-                        value={newPrice}
+                        value={`R$ ${card.price.toFixed(2)}`}
                         disabled
                     />
                 </label>
@@ -64,7 +91,7 @@ export const SingnUp = ({ courses }) => {
 
             <div className="flex sm:flex-col">
                 <button
-                    onClick={() => navigate("/")}
+                    onClick={validateForm}
                     className="bg-blue-600 px-6 py-2 outline-none rounded font-semibold hover:bg-blue-500 mr-2 text-lg sm:mr-0 sm:mb-4"
                 >Finalizar</button>
                 <button
@@ -73,7 +100,7 @@ export const SingnUp = ({ courses }) => {
                 >Voltar</button>
             </div>
 
-            <ModalForm setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen} />
+            <ModalForm setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen} user={user} />
         </div>
     );
 }

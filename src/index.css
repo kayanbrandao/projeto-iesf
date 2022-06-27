@@ -43,3 +43,7 @@
 .min-h-not {
     min-height: calc(100vh - 292px);
 }
+
+.min-h-modal {
+    min-height: calc(100% - 3rem - 20px);
+}
