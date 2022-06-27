@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { CardCourseHome } from "../../components/CardCourseHome/CardCourseHome";
+import { orderCourse } from "../../helpers/helpers";
 
 
 export const Home = ({ courses }) => {
     const [idCourse, setIdCourse] = useState(0);
+
+    orderCourse(courses, "0");
 
     return (
         <main className="container pt-8 min-h-home">
